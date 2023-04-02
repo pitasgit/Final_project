@@ -19,18 +19,10 @@ Feature: Login capability
   @smoke
   Scenario: I login with valid credentials
     When login: I login with user "itfta32usp@gmail.com" and pass "Testareautomata123!"
-    Then login: I am on the household page
+    Then household: I am on the household page
 
-  @smoke
-  Scenario Outline: I want to add a new person
-    When login: I am on the household page
-    When household: I click on the add button
-    When household: I add a new person <first_name> <last_name>
-    Then household: I validate that the person was added
 
-    Examples:
-      | first_name | last_name |
-      | Silviu     | Petre     |
+
 # pentru a rula aceste teste, folosim comanda behave -f html -o test_raport.html --tags=smoke
 #  In cazul in care vrem sa rulam doar un Scenariu, putem redenumi sccenariul respectiv si inlocuim tagul smoke cu numele testului dorit
 #  Deschidem test_raport.html cu browserul pentru a putea trage concluzii asupra testului rulat, daca a functionat

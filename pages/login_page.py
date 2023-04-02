@@ -10,7 +10,8 @@ class LoginPage(BasePage):
     PASS_INPUT = '//div[2]/div/div/input'
     LOGIN_BUTTON = '//div/div[3]/button/span[1]'
     INVALID_CREDENTIALS_ERROR = '//*[@id="client-snackbar"]/div/span'
-    VALID_LOGIN = '//span[text()="The Ungureanu Household"]'
+    VALID_LOGIN = '//*[@id="root"]/div[1]/div[1]/div/div[1]/span/span'
+    COOKIES = '//*[@id="onesignal-slidedown-cancel-button"]'
 
     # actions
 
@@ -18,9 +19,9 @@ class LoginPage(BasePage):
         self.wait_for_elem(self.USER_INPUT)
         self.driver.find_element(By.XPATH, self.USER_INPUT).send_keys(user)
 
-    def pass_input(self, pswd):
+    def pass_input(self, pasw):
         self.wait_for_elem(self.PASS_INPUT)
-        self.driver.find_element(By.XPATH, self.PASS_INPUT).send_keys(pswd)
+        self.driver.find_element(By.XPATH, self.PASS_INPUT).send_keys(pasw)
 
     def click_login_button(self):
         self.wait_for_elem(self.LOGIN_BUTTON)
@@ -34,8 +35,17 @@ class LoginPage(BasePage):
         actual = self.driver.find_element(By.XPATH, self.INVALID_CREDENTIALS_ERROR).text
         self.assertEqual(expected, actual, "Invalid username/password")
 
-    def validate_login(self):
+    # def validate_login(self):
+    #     self.wait_for_elem(self.VALID_LOGIN)
+    #     expected = 'https://jules.app/search/all'
+    #     actual = self.driver.current_url
+    #     self.assertEqual(expected, actual, "You are not on the household page")
+
+    def logged_in(self):
         self.wait_for_elem(self.VALID_LOGIN)
-        expected = 'The Ungureanu Household'
-        actual = self.driver.find_element(By.XPATH, self.VALID_LOGIN).text
-        self.assertEqual(expected, actual, "Login Successfull")
+        expected = 'https://jules.app/search/all'
+        actual = self.driver.current_url
+        self.assertEqual(expected, actual, "You are not on the household page")
+    def cookies(self):
+        self.wait_for_elem(self.COOKIES)
+        self.driver.find_element(By.XPATH, self.COOKIES).click()
