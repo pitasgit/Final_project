@@ -35,11 +35,6 @@ class LoginPage(BasePage):
         actual = self.driver.find_element(By.XPATH, self.INVALID_CREDENTIALS_ERROR).text
         self.assertEqual(expected, actual, "Invalid username/password")
 
-    # def validate_login(self):
-    #     self.wait_for_elem(self.VALID_LOGIN)
-    #     expected = 'https://jules.app/search/all'
-    #     actual = self.driver.current_url
-    #     self.assertEqual(expected, actual, "You are not on the household page")
 
     def logged_in(self):
         self.wait_for_elem(self.VALID_LOGIN)

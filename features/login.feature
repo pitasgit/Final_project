@@ -1,5 +1,5 @@
 Feature: Login capability
-  #smoke test este un sanity check - se ruleaza un login si daca merge, putem sa incepem suita mai mare de teste
+  #smoke test este un sanity check - se ruleaza un login si putem sa incepem suita mai mare de teste
 
   Background:
     Given home: I am an user on the home page
@@ -14,15 +14,11 @@ Feature: Login capability
       | itfta32ups@gmail.com | Testareautomata123  |
       | itffta32ups@gmail.co | TestareAutomata123! |
 
-    #cream un Scenario Outline: pentru a fi mai eficienti in testare, pentru a face cat mai putine scenarii
+
 
   @smoke
   Scenario: I login with valid credentials
-    When login: I login with user "itfta32usp@gmail.com" and pass "Testareautomata123!"
+    When login: I login with user "tiwkpet@gmail.com" and pass "Testareautomata123!"
     Then household: I am on the household page
 
 
-
-# pentru a rula aceste teste, folosim comanda behave -f html -o test_raport.html --tags=smoke
-#  In cazul in care vrem sa rulam doar un Scenariu, putem redenumi sccenariul respectiv si inlocuim tagul smoke cu numele testului dorit
-#  Deschidem test_raport.html cu browserul pentru a putea trage concluzii asupra testului rulat, daca a functionat
