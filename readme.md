@@ -1,3 +1,4 @@
+# Final_project
 Instalarea si rularea proiectului se face dupa cum urmeaza:
 
 A) Se descarca si instaleaza Google Chrome, proiectul a fost conceput pentru utilizarea cu acesta
